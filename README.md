@@ -1,6 +1,6 @@
 sudo -i
 sudo yum install git -y
-sudo yum install httpd - 
+sudo yum install httpd -y
 sudo systemctl start httpd
 chkconfig httpd on
 cd /var/www/http
