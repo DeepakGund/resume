@@ -7,6 +7,10 @@ locals {
 env = "Teraform"
 }
 
+variable "instance_count"{
+default = 2
+}
+
 
 resource "aws_vpc" "vpc" {
   cidr_block = "10.10.0.0/16"
@@ -26,7 +30,7 @@ cidr_block = "10.10.10.0/24"
 }
 
 resource "aws_instance" "ec2" {
-  count         = 2
+  count         = var.instance_count
 subnet_id = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
   instance_type = "t2.micro"
