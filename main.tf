@@ -12,8 +12,9 @@ default = 2
 }
 
 variable "instance_type"{
-default = t2.medium
+default = "t2.medium"
 }
+
 
 
 resource "aws_vpc" "vpc" {
