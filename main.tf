@@ -1,36 +1,12 @@
-provider "aws" {
-  region = "us-west-2"
+provider "aws" { 
+us-east-1
 }
 
-locals {
-env = "swiggy" 
+resource "aws_instance" "one" {
+count = 2
+ami = "ami-00b8917ae86a424c9"
+instance_type = "t2.micro"
+tags = {
+Name = "raham-server"
 }
-
-
-resource "aws_vpc" "vpc" {
-  cidr_block = "10.10.0.0/16"
- tags = {
-    Name = "${local.env}-VPC"
- }
-}
-
-resource "aws_subnet" "subnet" {
-vpc_id = aws_vpc.vpc.id
-cidr_block = "10.10.10.0/24"  
- tags = {
-    Name = "${local.env}-subnet"
- }
-}
-
-resource "aws_instance" "ec2" {
-  count         = 5
-subnet_id = aws_subnet.subnet.id
-  ami           = "ami-01b4a58555824692b"
-  instance_type = "t2.micro"
- tags = {
-    Name = "${local.env}-ec2"
- } 
-}
-output "abc" {
-value = aws_instance.ec2
 }
