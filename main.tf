@@ -4,7 +4,7 @@ provider "aws" {
 
 
 locals {
-env = "swiggy"
+env = "Teraform"
 }
 
 
@@ -26,7 +26,7 @@ cidr_block = "10.10.10.0/24"
 }
 
 resource "aws_instance" "ec2" {
-  count         = 5
+  count         = 2
 subnet_id = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
   instance_type = "t2.micro"
