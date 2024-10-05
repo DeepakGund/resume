@@ -2,7 +2,6 @@ provider "aws" {
   region = "us-west-2"
 }
 
-
 locals {
 env = "Teraform"
 }
@@ -16,14 +15,12 @@ default = "t2.medium"
 }
 
 
-
 resource "aws_vpc" "vpc" {
   cidr_block = "10.10.0.0/16"
  tags = {
     Name = "${local.env}-VPC"
  }
 }
-
 
 
 resource "aws_subnet" "subnet" {
