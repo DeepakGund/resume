@@ -25,18 +25,18 @@ resource "aws_vpc" "vpc" {
 }
 
 # vpc-subnet
-resource "aws_subnet" "vpc-subnet" {
+resource "aws_subnet" "subnet" {
 vpc_id = aws_vpc.vpc.id
 cidr_block = "10.10.10.0/24"
  tags = {
-    Name = "${local.env}-vpc-subnet"
+    Name = "${local.env}-subnet"
  }
 }
 
 # EC2
 resource "aws_instance" "ec2" {
   count         = var.instance_count
-subnet_id = aws_subnet.vpc-subnet.id
+subnet_id = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
   instance_type = var.instance_type
  tags = {
