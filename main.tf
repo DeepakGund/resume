@@ -2,11 +2,6 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "local_file" "private_key_pem" {
-filename = "key.pem"
-content = tls_private_key.rsa-2048_example.private_key_pem
-}
-
 
 locals {
 env = "swiggy"
