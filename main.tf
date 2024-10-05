@@ -35,7 +35,7 @@ subnet_id = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
   instance_type = "t2.micro"
  tags = {
-    Name = "${local.env}-ec2"
+    Name = "${count.index + 1}-ec2"
  }
 }
 
