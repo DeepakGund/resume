@@ -7,9 +7,9 @@ locals {
 }
 
 # instance_type
-variable "instance_type" {
+variable "instance_types" {
 type = list(string)
-default = "t2.micro"
+default = ["t2.micro", "t2.medium"]
 }
 
 # VPC
@@ -28,7 +28,7 @@ resource "aws_subnet" "subnet" {
 
 # EC2
 resource "aws_instance" "ec2" {
-  count         = length(var.instance_type)
+  count         = length(var.instance_types)
   subnet_id     = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
   instance_type = tolist(var.instance_type) [count.index]
