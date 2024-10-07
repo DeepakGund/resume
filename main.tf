@@ -6,14 +6,10 @@ locals {
   env = "Terraform"
 }
 
-#instance_count
-variable "instance_count" {
-  default = 1
-}
-
 # instance_type
 variable "instance_type" {
-  default = "t2.micro"
+type = list(string)
+default = "t2.micro"
 }
 
 # VPC
@@ -32,10 +28,10 @@ resource "aws_subnet" "subnet" {
 
 # EC2
 resource "aws_instance" "ec2" {
-  count         = var.instance_count
+  count         = length(var.instance_type)
   subnet_id     = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
-  instance_type = var.instance_type
+  instance_type = tolist(var.instance_type) [count.index]
   tags = {
     Name = "${local.env}-Server-${count.index + 1}"
   }
