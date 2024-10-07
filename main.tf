@@ -31,7 +31,7 @@ resource "aws_instance" "ec2" {
   count         = length(var.instance_types)
   subnet_id     = aws_subnet.subnet.id
   ami           = "ami-01b4a58555824692b"
-  instance_type = tolist(var.instance_type) [count.index]
+  instance_type = tolist(var.instance_types)[count.index]
   tags = {
     Name = "${local.env}-Server-${count.index + 1}"
   }
