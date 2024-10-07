@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 locals {
-  env = "Teraform"
+  env = "Terraform"
 }
 
 #instance_count
