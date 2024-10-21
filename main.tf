@@ -18,7 +18,7 @@ resource "aws_subnet" "subnet" {
 
 # EC2
 resource "aws_instance" "ec2" {
-ami = "ami-01b4a58555824692b"
+ami = "ami-0d9c5e03a845034ff"
 instance_type = "t2.micro"
 }
 
