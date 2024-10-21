@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('git_pull') {
+            steps {
+                git 'https://github.com/DeepakGund/resume.git'
+            }
+        }
+        stage("terra_plugins") {
+            steps {
+                sh "terraform init"
+            }
+        }
+        stage("terra_plan") {
+            steps {
+                 sh "terraform plan"
+            }
+        }
+        stage("terra_apply_auto_approve") {
+            steps {
+                 sh "terraform apply -auto-approve"
+            }
+        }
+    }
+}
