@@ -1,5 +1,7 @@
 provider "aws" {
-  region = "us-west-2"
+  region     = "us-west-2"  # Specify your desired region
+  access_key = "AKIAY4DHUJ6J53R5IUOZ"
+  secret_key = "rm8MzKShsANUNPHlqMnz36ucJFMuJgTfdhiAPIMv"
 }
 
 # VPC
@@ -24,5 +26,5 @@ instance_type = "t2.micro"
 
 
 output "abc" {
-  value = aws_instance.ec2
+  value = aws_instance.ec2.public_ip
 }
