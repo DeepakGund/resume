@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-west-2"  # Specify your desired region
-  access_key = "AKIAY4DHUJ6J53R5IUOZ"
-  secret_key = "rm8MzKShsANUNPHlqMnz36ucJFMuJgTfdhiAPIMv"
+  #access_key = "AKIAY4DHUJ6J53R5IUOZ"
+  #secret_key = "rm8MzKShsANUNPHlqMnz36ucJFMuJgTfdhiAPIMv"
 }
 
 # VPC
